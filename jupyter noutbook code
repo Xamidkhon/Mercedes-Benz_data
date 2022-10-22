@@ -1,0 +1,46 @@
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+merc= pd.read_csv('D:\car_data\merc_s.csv')
+merc.head(15)
+plt.plot(merc["model"],'y')
+plt.xlabel('price')
+plt.ylabel('model name')
+plt.title('Merc of statics 2018-2020')
+plt.show()
+import matplotlib.pyplot as plt
+# Pie chart, where the slices will be ordered and plotted counter-clockwise:
+labels = 'S_Class','A_Class','G_Class', 'B_Class'
+sizes = [15, 30, 45, 10]
+explode = (0, 0.1, 0, 0)  # only "explode" the 2nd slice (i.e. 'Hogs')
+
+fig1, ax1 = plt.subplots()
+ax1.pie(sizes, explode=explode, labels=labels, autopct='%1.1f%%',
+        shadow=True, startangle=90)
+ax1.axis('equal')  # Equal aspect ratio ensures that pie is drawn as a circle.
+plt.title('Merc Model of statics')
+plt.show()
+import matplotlib.pyplot as plt
+import numpy as np
+
+# Fixing random state for reproducibility
+np.random.seed(19680801)
+
+
+plt.rcdefaults()
+fig, ax = plt.subplots()
+
+# Example data
+cars = ('A_Class', 'S_Class', 'B_Class', 'G_Class', 'GLS_Class')
+y_pos = np.arange(len(cars))
+performance = 2 + 220 * np.random.rand(len(cars))
+error = np.random.rand(len(cars))
+
+ax.barh(y_pos, performance, xerr=error, align='center', color=['black', 'red', 'green', 'blue', 'cyan'])
+
+ax.set_yticks(y_pos, labels=cars)
+ax.invert_yaxis()  # labels read top-to-bottom
+ax.set_xlabel('Performance')
+ax.set_title('How fast?')
+
+plt.show()
